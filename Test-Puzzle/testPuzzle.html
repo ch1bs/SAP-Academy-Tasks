@@ -3,12 +3,12 @@
     <meta charset="utf-8" />
     <title>KPMG ITS</title>
     <style>
-      .display-topright {
+      .display-top-right {
         position: absolute;
         right: 5;
         top: 5;
       }
-      .display-topleft {
+      .display-top-left {
         position: absolute;
         left: 5;
         top: 5;
@@ -21,13 +21,13 @@
         width: 800px;
         height: 600px;
       }
+      .hide-button {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <div class="display-topright">
-      <p id="clock"></p>
-    </div>
-    <div></div>
+    <p class="display-top-right" id="clock"></p>
     <table>
       <tbody>
         <tr>
@@ -41,21 +41,20 @@
         </tr>
         <tr>
           <td>
-            <input
-              value="Change the Image!"
-              type="button"
-              onclick="changeImage();"
-            />
+            <button type="button" onclick="changeImage()">Change Image</button>
           </td>
           <td>
             <p id="infoText" />
           </td>
           <td>
-            <input
-              value="Correct the Image!"
-              type="hidden"
-              onclick="correctImage();"
-            />
+            <button
+              class="hide-button"
+              id="correctImage"
+              type="button"
+              onclick="correctImage()"
+            >
+              Correct the Image!
+            </button>
           </td>
         </tr>
         <tr>
@@ -65,37 +64,49 @@
             </address>
           </td>
           <td>
-            <a hef="https://kpmg-its.bg">kpmg-its.bg</a>
+            <a href="https://kpmg-its.bg">kpmg-its.bg</a>
           </td>
         </tr>
       </tbody>
     </table>
     <script>
-      var currentdate = new Date();
-      var datetime =
-        currentdate.getDate() +
+      const currentDate = new Date();
+      const datetime =
+        currentDate.getDate() +
         '/' +
-        (currentdate.getMonth() + 1) +
+        (currentDate.getMonth() + 1) +
         '/' +
-        currentdate.getFullYear() +
+        currentDate.getFullYear() +
         ' @ ' +
-        currentdate.getHours() +
+        currentDate.getHours() +
         ':' +
-        currentdate.getMinutes() +
+        currentDate.getMinutes() +
         ':' +
-        currentdate.getSeconds();
+        currentDate.getSeconds();
       document.getElementById('clock').innerHTML = datetime;
     </script>
     <script>
       function changeImage() {
         // maybe whenever I press this button, I should change the background image!
+        document.body.style.background = 'aqua';
         const newImage =
           'https://scontent.fsof10-1.fna.fbcdn.net/v/t1.0-9/30629722_596180517402895_7394465904408395776_n.png?_nc_cat=103&_nc_sid=dd9801&_nc_ohc=U9Q6oPYax40AX9orVJ4&_nc_ht=scontent.fsof10-1.fna&oh=951716c8070ac4e7da6a2174f2e25179&oe=5F470F02';
         const infoText = "Looks little bit funny, isn't it?";
         document.getElementById('image').src = newImage;
-        document.getElementById('infoText').innerHTML = infoText;
+        document.getElementById('infoText').innerText = infoText;
+        document.getElementById('correctImage').classList = '';
       }
-      function correctImage() {}
+      function correctImage() {
+        const image = document.getElementById('image').src;
+        if (
+          image ===
+          'https://scontent.fsof10-1.fna.fbcdn.net/v/t1.0-9/30629722_596180517402895_7394465904408395776_n.png?_nc_cat=103&_nc_sid=dd9801&_nc_ohc=U9Q6oPYax40AX9orVJ4&_nc_ht=scontent.fsof10-1.fna&oh=951716c8070ac4e7da6a2174f2e25179&oe=5F470F02'
+        ) {
+          const correctedImage = image;
+          document.getElementById('image').src = correctedImage;
+          document.getElementById('image').classList = correctImage;
+        }
+      }
     </script>
   </body>
 </html>
