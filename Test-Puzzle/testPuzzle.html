@@ -1,0 +1,101 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>KPMG ITS</title>
+    <style>
+      .display-topright {
+        position: absolute;
+        right: 5;
+        top: 5;
+      }
+      .display-topleft {
+        position: absolute;
+        left: 5;
+        top: 5;
+      }
+      .itsImage {
+        width: 500px;
+        height: 600px;
+      }
+      .correctedImage {
+        width: 800px;
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="display-topright">
+      <p id="clock"></p>
+    </div>
+    <div></div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <img
+              id="image"
+              src="https://scontent.fsof10-1.fna.fbcdn.net/v/t1.0-9/10447632_371847243015828_7738563833012363269_n.png?_nc_cat=109&_nc_sid=85a577&_nc_ohc=5WI5EdXB4RMAX_uJRAY&_nc_oc=AQkvfenCaQy2n7xlRW1f5KsgYC0l5vd6fiw9zL3WBvIYVS6hrnVYOtEwUwToqibDXaA&_nc_ht=scontent.fsof10-1.fna&oh=8f083887540e1da5d665df12d56b9f2c&oe=5F46162F"
+              class="itsImage"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input
+              value="Change the Image!"
+              type="button"
+              onclick="changeImage();"
+            />
+          </td>
+          <td>
+            <p id="infoText" />
+          </td>
+          <td>
+            <input
+              value="Correct the Image!"
+              type="hidden"
+              onclick="correctImage();"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <address>
+              Business Park Sofia, building 15A Sofia, Bulgaria 1766
+            </address>
+          </td>
+          <td>
+            <a hef="https://kpmg-its.bg">kpmg-its.bg</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      var currentdate = new Date();
+      var datetime =
+        currentdate.getDate() +
+        '/' +
+        (currentdate.getMonth() + 1) +
+        '/' +
+        currentdate.getFullYear() +
+        ' @ ' +
+        currentdate.getHours() +
+        ':' +
+        currentdate.getMinutes() +
+        ':' +
+        currentdate.getSeconds();
+      document.getElementById('clock').innerHTML = datetime;
+    </script>
+    <script>
+      function changeImage() {
+        // maybe whenever I press this button, I should change the background image!
+        const newImage =
+          'https://scontent.fsof10-1.fna.fbcdn.net/v/t1.0-9/30629722_596180517402895_7394465904408395776_n.png?_nc_cat=103&_nc_sid=dd9801&_nc_ohc=U9Q6oPYax40AX9orVJ4&_nc_ht=scontent.fsof10-1.fna&oh=951716c8070ac4e7da6a2174f2e25179&oe=5F470F02';
+        const infoText = "Looks little bit funny, isn't it?";
+        document.getElementById('image').src = newImage;
+        document.getElementById('infoText').innerHTML = infoText;
+      }
+      function correctImage() {}
+    </script>
+  </body>
+</html>
